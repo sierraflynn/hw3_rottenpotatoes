@@ -64,3 +64,11 @@ Then /I should( not)? see the movies with the previous (.*)s/ do |notsee, filter
     step("I should#{notsee} see the movies with the #{filter}s: #{@filters}")
     pending
 end
+
+Then /I should see '(.*)' before '(.*)'$/ do |m1, m2|
+  m1loc = page.body.index(m1)
+  m2loc = page.body.index(m2)
+  #debugger
+  assert m1loc < m2loc
+end
+
