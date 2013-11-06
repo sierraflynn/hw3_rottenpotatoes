@@ -29,19 +29,19 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   # enter step to "submit" the search form on the homepage
   And I press 'Refresh'
   # enter step(s) to ensure that PG and R movies are visible
-  Then I should see the movies with the ratings: PG, R
+  #Then I should see the movies with the ratings: PG, R
+  Then I should see the movies: The Incredibles, Raiders of the Lost Ark, Amelie, The Terminator, When Harry Met Sally
   # enter step(s) to ensure that other movies are not visible
-  And I should not see the movies with the ratings: G, PG-13, NC-17
+  #And I should not see the movies with the ratings: G, PG-13, NC-17
+  And I should not see the movies: Aladdin, The Help, Chocolat, 2001: A Space Odyssey, Chicken Run
 
 Scenario: no ratings selected
   # enter step(s) to uncheck all checkboxes
   Given I uncheck the following ratings: G, PG-13, NC-17, PG, R
   # enter step to "submit" the search form on the homepage
   And I press 'Refresh'
-  # enter step(s) to ensure that previous ratings are visible
-  Then I should see the movies with the previous ratings
-  # enter step(s) to ensure that other movies are not visible
-  #And I should not see the movies with the ratings: G, PG-13, NC-17
+  # if no ratings are selected, you should see all the movies!
+  Then I should see all the movies
 
 Scenario: all ratings selected
   # enter step(s) to check all checkboxes
@@ -49,4 +49,4 @@ Scenario: all ratings selected
   # enter step to "submit" the search form on the homepage
   And I press 'Refresh'
   # enter step(s) to ensure that all movies are visible
-  Then I should see the movies with the ratings: G, PG-13, NC-17, PG, R
+  Then I should see all the movies
