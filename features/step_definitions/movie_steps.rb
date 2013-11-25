@@ -75,7 +75,7 @@ Then /I should( not)? see the movies with the previous (.*)s/ do |notsee, filter
 end
 
 Then /I should( not?) see any|all the movies/ do |notsee|
-    @movies = Movie.all #grab all movies with rating
+    @movies = Movie.all #grab all movies
     @movies.each do |movie|
       if page.respond_to? :should
         page.should have_content(movie.title)
